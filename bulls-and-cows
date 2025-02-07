@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if (( BASH_VERSINFO[0] < 5 || (BASH_VERSINFO[0] == 5 && BASH_VERSINFO[1] < 2) )); then
+    echo "Ошибка: Требуется Bash версии 5.2 или выше."
+    exit 1
+fi
+
 trap 'echo -e "\nДля завершения работы введите q или Q";' SIGINT
 
 is_valid_guess() {
